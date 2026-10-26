@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#879F87">
   <title>N5 Easy — Learn Japanese</title>
+  <link rel="icon" type="image/jpeg" href="https://i.ibb.co/mrs31N8h/Gemini-Generated-Image-j0m4s4j0m4s4j0m4.jpg">
+  <link rel="apple-touch-icon" href="https://i.ibb.co/mrs31N8h/Gemini-Generated-Image-j0m4s4j0m4s4j0m4.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+Bengali:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
@@ -162,6 +164,33 @@
     .speak-btn.speaking{animation:pulse .6s ease}
     @keyframes pulse{50%{transform:scale(1.25);background:var(--sage-400);color:#fff}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important}}
+    /* brand text */
+    .brand span{position:relative;display:inline-block;font-weight:800;font-size:17px;letter-spacing:.6px;padding-right:14px;
+      background:linear-gradient(100deg,#3f5a48 0%,#526B59 35%,#E8A0AE 50%,#526B59 65%,#3f5a48 100%);background-size:250% 100%;
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+      animation:brandShine 4.5s ease-in-out infinite,brandIn .9s cubic-bezier(.2,.8,.2,1) both;transition:letter-spacing .35s}
+    .dark .brand span{background-image:linear-gradient(100deg,#A8D5BA 0%,#D9F2E6 35%,#F4A9BC 50%,#D9F2E6 65%,#A8D5BA 100%)}
+    .brand span::after{content:"";position:absolute;left:0;right:14px;bottom:-3px;height:2px;border-radius:2px;background:linear-gradient(90deg,#526B59,#E8A0AE,#526B59);transform-origin:left;animation:brandLine 4.5s ease-in-out infinite}
+    .dark .brand span::after{background:linear-gradient(90deg,#A8D5BA,#F4A9BC,#A8D5BA)}
+    .brand span::before{content:"";position:absolute;right:0;top:1px;width:9px;height:7px;background:linear-gradient(135deg,#FFE9EF,#E8A0AE);border-radius:150% 0 150% 0;-webkit-text-fill-color:initial;animation:brandPetal 3.2s ease-in-out infinite}
+    .brand:hover span{letter-spacing:1.6px}
+    @keyframes brandShine{0%,100%{background-position:100% 0}50%{background-position:0 0}}
+    @keyframes brandIn{from{opacity:0;transform:translateY(-8px) scale(.94);filter:blur(3px)}to{opacity:1;transform:none;filter:none}}
+    @keyframes brandLine{0%{transform:scaleX(0)}45%,80%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:0}}
+    @keyframes brandPetal{0%,100%{transform:translate(0,0) rotate(0deg)}50%{transform:translate(-2px,5px) rotate(40deg)}}
+    /* sakura petals */
+    .sakura-layer{position:absolute;left:0;right:0;top:0;bottom:0;overflow:hidden;pointer-events:none;--h:400px}
+    .sakura-layer i{position:absolute;top:-20px;display:block;background:linear-gradient(135deg,#FFE9EF 0%,#F4A9BC 100%);border-radius:150% 0 150% 0;opacity:0;animation:sakuraFall linear infinite;will-change:transform,opacity}
+    #sakuraHeader{bottom:auto;height:58px;--h:58px}
+    .header-inner{position:relative;z-index:1}
+    @keyframes sakuraFall{
+      0%{transform:translate3d(0,0,0) rotate(0deg);opacity:0}
+      10%{opacity:var(--o,.85)}
+      30%{transform:translate3d(var(--sway),calc(var(--h)*.3),0) rotate(110deg)}
+      60%{transform:translate3d(calc(var(--sway)*-.6),calc(var(--h)*.65),0) rotate(230deg)}
+      90%{opacity:var(--o,.85)}
+      100%{transform:translate3d(var(--drift),calc(var(--h) + 30px),0) rotate(360deg);opacity:0}}
+    @media(prefers-reduced-motion:reduce){.sakura-layer{display:none}}
 
     /* Universities: photo + info */
     .uni-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:16px}
@@ -276,8 +305,9 @@
 <body>
 
 <header id="header">
+  <div class="sakura-layer" id="sakuraHeader" aria-hidden="true"></div>
   <div class="header-inner">
-    <a href="#/" class="brand"><div class="brand-logo">あ</div><span data-ui="appName">N5 Easy</span></a>
+    <a href="#/" class="brand"><div class="brand-logo"><img src="https://i.ibb.co/mrs31N8h/Gemini-Generated-Image-j0m4s4j0m4s4j0m4.jpg" alt="N5 Easy" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block"></div><span data-ui="appName">N5 Easy</span></a>
     <nav class="nav-desktop" id="navDesktop"></nav>
     <div class="header-actions">
       <button class="icon-btn" id="themeBtn" aria-label="Toggle theme"></button>
@@ -339,6 +369,7 @@
   const UI = {
     appName: T('N5 Easy','N5 Easy','N5 Easy'),
     home: T('Home','হোম','गृह'),
+    dashboard: T('Dashboard','ড্যাশবোর্ড','ड्यासबोर्ड'),
     lessons: T('Lessons','পাঠ','पाठ'),
     practice: T('Practice','অভ্যাস','अभ्यास'),
     flashcards: T('Flashcards','ফ্ল্যাশকার্ড','फ्ल्यासकार्ड'),
@@ -1928,6 +1959,76 @@
   function speak(text,btn){if(!('speechSynthesis'in window)){toast('Audio not supported');return;}try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='ja-JP';u.rate=0.85;if(!speakState.ja){const vs=speechSynthesis.getVoices();speakState.ja=vs.find(v=>v.lang==='ja-JP')||vs.find(v=>v.lang.startsWith('ja'));}if(speakState.ja)u.voice=speakState.ja;else if(!speakState.warned){speakState.warned=true;toast('No Japanese voice');}if(btn){btn.classList.add('speaking');setTimeout(()=>btn.classList.remove('speaking'),650);}speechSynthesis.speak(u);}catch(e){toast('Audio error');}}
   function speakBtn(text){return `<button class="speak-btn" data-speak="${esc(text)}" aria-label="${esc(tUi('listen'))}">${ICONS.volume}</button>`;}
 
+  /* ============ ADMIN + ANALYTICS ============ */
+  const CONFIG={
+    /* Default admin password is "admin123". To change it: open the browser console, run  cyrb53('YourNewPassword')  and paste the result below. */
+    ADMIN_HASH:'19uy3p94y8y',
+    /* Optional: Firebase Realtime Database URL (e.g. 'https://your-app-default-rtdb.firebaseio.com') to count ALL visitors. Leave '' for this-device-only stats. */
+    FIREBASE_DB_URL:''
+  };
+  function cyrb53(str,seed=0){let h1=0xdeadbeef^seed,h2=0x41c6ce57^seed;for(let i=0,ch;i<str.length;i++){ch=str.charCodeAt(i);h1=Math.imul(h1^ch,2654435761);h2=Math.imul(h2^ch,1597334677);}h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);return (4294967296*(2097151&h2)+(h1>>>0)).toString(36);}
+  const ADMIN_KEY='n5easy-admin-session', VID_KEY='n5easy-vid', LOG_KEY='n5easy-analytics-log';
+  function isAdmin(){try{return localStorage.getItem(ADMIN_KEY)===CONFIG.ADMIN_HASH;}catch{return false;}}
+  function adminLogin(pw){if(cyrb53(pw||'')===CONFIG.ADMIN_HASH){try{localStorage.setItem(ADMIN_KEY,CONFIG.ADMIN_HASH);}catch{}return true;}return false;}
+  function adminLogout(){try{localStorage.removeItem(ADMIN_KEY);}catch{}}
+  function getVid(){try{let v=localStorage.getItem(VID_KEY);if(!v){v='v'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);localStorage.setItem(VID_KEY,v);}return v;}catch{return 'anon';}}
+  function localLog(){try{return JSON.parse(localStorage.getItem(LOG_KEY)||'[]');}catch{return [];}}
+  function detectCountry(){
+    try{const tz=(Intl.DateTimeFormat().resolvedOptions().timeZone||'');
+      if(tz==='Asia/Dhaka')return 'BD';
+      if(tz==='Asia/Kolkata'||tz==='Asia/Calcutta')return 'IN';
+      if(tz==='Asia/Kathmandu'||tz==='Asia/Katmandu')return 'NP';
+    }catch{}
+    return 'OT';
+  }
+  function trackView(){
+    if(isAdmin())return;
+    const path=(location.hash.replace(/^#/,'')||'/').split('/').filter(Boolean)[0]||'home';
+    let ref='direct';try{if(document.referrer){const h=new URL(document.referrer).hostname;if(h&&h!==location.hostname)ref=h;}}catch{}
+    const ev={t:Date.now(),v:getVid(),c:detectCountry(),p:path,l:state.lang,d:/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)?'mobile':'desktop',r:ref};
+    try{const log=localLog();log.push(ev);if(log.length>1500)log.splice(0,log.length-1500);localStorage.setItem(LOG_KEY,JSON.stringify(log));}catch{}
+    if(CONFIG.FIREBASE_DB_URL){try{fetch(CONFIG.FIREBASE_DB_URL.replace(/\/$/,'')+'/visits.json',{method:'POST',body:JSON.stringify(ev),keepalive:true}).catch(()=>{});}catch{}}
+  }
+  async function loadVisits(){
+    if(CONFIG.FIREBASE_DB_URL){
+      try{const r=await fetch(CONFIG.FIREBASE_DB_URL.replace(/\/$/,'')+'/visits.json?orderBy=%22$key%22&limitToLast=5000');const j=await r.json();return{global:true,events:Object.values(j||{})};}catch{}
+    }
+    return{global:false,events:localLog()};
+  }
+  function countBy(arr,fn){const m={};arr.forEach(x=>{const k=fn(x);m[k]=(m[k]||0)+1;});return Object.entries(m).sort((a,b)=>b[1]-a[1]);}
+  function dashList(rows,total){
+    if(!rows.length)return `<p class="small text-muted mt-sm">—</p>`;
+    return rows.slice(0,6).map(([k,n])=>`<div style="margin-top:8px"><div class="flex-between small"><span>${esc(k)}</span><span>${n}</span></div><div style="height:6px;border-radius:99px;background:var(--border);margin-top:3px"><div style="height:100%;width:${Math.round(n/Math.max(total,1)*100)}%;border-radius:99px;background:var(--sage-600)"></div></div></div>`).join('');
+  }
+  function renderDashboardBody(data){
+    const ev=data.events, now=Date.now(), day=86400000;
+    const startToday=new Date();startToday.setHours(0,0,0,0);const st=startToday.getTime();
+    const uniq=new Set(ev.map(e=>e.v)).size;
+    const today=ev.filter(e=>e.t>=st);
+    const online=new Set(ev.filter(e=>now-e.t<5*60000).map(e=>e.v)).size;
+    const days=[...Array(7)].map((_,i)=>{const s=st-(6-i)*day;const c=ev.filter(e=>e.t>=s&&e.t<s+day);return{label:new Date(s).toLocaleDateString('en-US',{weekday:'short'}),views:c.length,users:new Set(c.map(e=>e.v)).size};});
+    const max=Math.max(1,...days.map(d=>d.views));
+    const stat=(n,l)=>`<div class="card center"><div style="font-size:28px;font-weight:700;color:var(--sage-600)">${n}</div><div class="small">${esc(l)}</div></div>`;
+    const pageName=p=>({home:'Home'}[p]||p.charAt(0).toUpperCase()+p.slice(1));
+    return `
+    <p class="small mb" style="color:var(--text-muted)">${data.global?'Source: all visitors (Firebase)':'Source: this device only. Add a Firebase URL in CONFIG to count all visitors.'}</p>
+    <div class="grid grid-4">${stat(ev.length,'Total page views')}${stat(uniq,'Unique visitors')}${stat(today.length,'Views today')}${stat(online,'Active (last 5 min)')}</div>
+    <div class="card mt"><h3>Last 7 days</h3>
+      <div style="display:flex;align-items:flex-end;gap:8px;height:150px;margin-top:12px">${days.map(d=>`<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%"><div class="small">${d.views}</div><div title="${d.users} visitors" style="width:100%;max-width:36px;height:${Math.max(3,Math.round(d.views/max*100))}px;background:var(--sage-600);border-radius:6px 6px 0 0"></div><div class="small" style="margin-top:4px">${d.label}</div></div>`).join('')}</div></div>
+    <div class="card mt"><h3>Visitors by country</h3>${[['BD','🇧🇩','Bangladesh'],['IN','🇮🇳','India'],['NP','🇳🇵','Nepal'],['OT','🌍','Other countries']].map(([code,flag,name])=>{const c=ev.filter(e=>(e.c||'OT')===code);const u=new Set(c.map(e=>e.v)).size;return `<div style="margin-top:12px"><div class="flex-between small"><span>${flag} ${name}</span><span>${u} visitors · ${c.length} views</span></div><div style="height:8px;border-radius:99px;background:var(--border);margin-top:4px"><div style="height:100%;width:${Math.round(c.length/Math.max(ev.length,1)*100)}%;border-radius:99px;background:var(--sage-600)"></div></div></div>`;}).join('')}<p class="small mt-sm" style="color:var(--text-muted)">Country is estimated from the visitor's device time zone, so VPNs or travellers may be counted in another country.</p></div>
+    <div class="grid grid-2 mt">
+      <div class="card"><h3>Top pages</h3>${dashList(countBy(ev,e=>pageName(e.p)),ev.length)}</div>
+      <div class="card"><h3>Devices</h3>${dashList(countBy(ev,e=>e.d==='mobile'?'Mobile':'Desktop'),ev.length)}</div>
+      <div class="card"><h3>Language</h3>${dashList(countBy(ev,e=>({en:'English',bn:'বাংলা',ne:'नेपाली'}[e.l]||e.l)),ev.length)}</div>
+      <div class="card"><h3>Traffic sources</h3>${dashList(countBy(ev,e=>e.r||'direct'),ev.length)}</div>
+    </div>`;
+  }
+  function renderDashboard(){
+    if(!isAdmin())return `<div class="card center"><h2>Admin only</h2><p class="small mt-sm">Log in as admin from Settings to see the dashboard.</p><p class="mt"><a href="#/settings" class="btn btn-primary">${esc(tUi('settings'))}</a></p></div>`;
+    setTimeout(async()=>{const d=await loadVisits();const el=document.getElementById('dashBody');if(el)el.innerHTML=renderDashboardBody(d);},0);
+    return `<h1 class="stitle"><span>${esc(tUi('dashboard'))}</span></h1><div id="dashBody"><div class="card center text-muted">Loading…</div></div>`;
+  }
+
   /* ============ NAV ============ */
   const NAV=[
     {path:'/',key:'home',icon:'home'},
@@ -1950,23 +2051,35 @@
   const MOBILE_NAV=[
     {path:'/',key:'home',icon:'home'},
     {path:'/lessons',key:'lessons',icon:'book'},
-    {path:'/quiz',key:'practice',icon:'target'},
-    {path:'/flashcards',key:'flashcards',icon:'layers2'},
+    {path:'/particles',key:'particles',icon:'zap'},
+    {path:'/vocabulary',key:'vocabulary',icon:'layers'},
     {path:'/settings',key:'profile',icon:'user'}
   ];
 
+  function navItems(){return isAdmin()?[...NAV,{path:'/dashboard',key:'dashboard',icon:'barChart'}]:NAV;}
   function renderNav(){
     const path = location.hash.replace(/^#/,'')||'/';
     const isActive = p => p==='/'?path==='/':path.startsWith(p);
     const navD = $('#navDesktop');
-    if(navD) navD.innerHTML = NAV.map(n=>`<a href="#${n.path}" class="nav-link ${isActive(n.path)?'active':''}">${ICONS[n.icon]||''}<span>${esc(tUi(n.key))}</span></a>`).join('');
+    if(navD) navD.innerHTML = navItems().map(n=>`<a href="#${n.path}" class="nav-link ${isActive(n.path)?'active':''}">${ICONS[n.icon]||''}<span>${esc(tUi(n.key))}</span></a>`).join('');
     const mm = $('#mobile-menu');
-    if(mm) mm.innerHTML = NAV.map(n=>`<a href="#${n.path}" class="${isActive(n.path)?'active':''}">${ICONS[n.icon]||''}<span>${esc(tUi(n.key))}</span></a>`).join('');
+    if(mm) mm.innerHTML = navItems().map(n=>`<a href="#${n.path}" class="${isActive(n.path)?'active':''}">${ICONS[n.icon]||''}<span>${esc(tUi(n.key))}</span></a>`).join('');
     const bn = $('#bnInner');
     if(bn) bn.innerHTML = MOBILE_NAV.map(n=>{const active=n.path==='/'?path==='/':path.startsWith(n.path);return `<a href="#${n.path}" class="bn-item ${active?'active':''}"><div class="bn-icon">${ICONS[n.icon]||''}</div><span>${esc(tUi(n.key))}</span></a>`;}).join('');
     const tb = $('#themeBtn'); if(tb) tb.innerHTML = state.theme==='dark'?ICONS.sun:ICONS.moon;
     const mb = $('#menuBtn'); if(mb && !$('#mobile-menu').classList.contains('open')) mb.innerHTML = ICONS.menu;
     const bs = document.querySelector('.brand span'); if(bs) bs.textContent = tUi('appName');
+  }
+
+  /* ============ SAKURA ============ */
+  function sakuraPetals(n,minS,maxS,minD,maxD){
+    let seed=n*7919+minS*31+maxS;const rnd=()=>{seed=(seed*16807)%2147483647;return (seed-1)/2147483646;};
+    let out='';
+    for(let i=0;i<n;i++){
+      const sz=minS+rnd()*(maxS-minS),d=minD+rnd()*(maxD-minD);
+      out+=`<i style="left:${(rnd()*100).toFixed(1)}%;width:${sz.toFixed(1)}px;height:${(sz*.8).toFixed(1)}px;animation-duration:${d.toFixed(1)}s;animation-delay:-${(rnd()*d).toFixed(1)}s;--sway:${(rnd()*40-20).toFixed(0)}px;--drift:${(rnd()*60-10).toFixed(0)}px;--o:${(.55+rnd()*.35).toFixed(2)}"></i>`;
+    }
+    return out;
   }
 
   /* ============ ROUTER ============ */
@@ -1995,6 +2108,7 @@
       else if(parts[0]==='universities') html = renderUniversities();
       else if(parts[0]==='mocktests') html = renderMockTests();
       else if(parts[0]==='materials') html = renderMaterials();
+      else if(parts[0]==='dashboard') html = renderDashboard();
       else html = `<div class="card center"><h2>404 — Page not found</h2><p class="text-muted mt-sm">${esc(path)}</p><p class="mt"><a href="#/" class="btn btn-primary">${ICONS.arrowLeft} ${esc(tUi('home'))}</a></p></div>`;
     } catch(e){console.error(e);html = `<div class="card"><h2>${ICONS.alert} Error</h2><p class="text-muted mt-sm">${esc(e.message)}</p></div>`;}
     // Detail pages (lessons/particles/kanji + id) already have their own Back button
@@ -2019,7 +2133,7 @@
     return `<div class="flex mb back-bar"><a href="${esc(target)}" class="btn btn-ghost" data-back aria-label="${esc(tUi('back'))}">${ICONS.arrowLeft} ${esc(tUi('back'))}</a></div>`;
   }
   trackNav();
-  window.addEventListener('hashchange', ()=>{trackNav();render();});
+  window.addEventListener('hashchange', ()=>{trackNav();render();trackView();});
 
   /* ============ HOME ============ */
   function homeGreeting(){
@@ -2061,6 +2175,7 @@
     return `
     <section class="hero" aria-label="${esc(tUi('appName'))}">
       <div class="hero-deco" aria-hidden="true"><span>あ</span><span>ア</span><span>日</span><span>本</span><span>桜</span><span>語</span></div>
+      <div class="sakura-layer" aria-hidden="true">${sakuraPetals(18,8,16,7,12)}</div>
       <div class="hero-lang" role="group" aria-label="${esc(tr3('Language','ভাষা','भाषा'))}">${[['en','English'],['bn','বাংলা'],['ne','नेपाली']].map(([c,n])=>`<button type="button" class="hero-lang-btn ${state.lang===c?'active':''}" data-action="lang" data-lang="${c}" aria-pressed="${state.lang===c}">${n}</button>`).join('')}</div>
       <div class="hero-top">
         <div class="hero-text">
@@ -2468,11 +2583,11 @@
     const cats=[...new Set(MATERIALS.map(m=>m.cat))];
     return `
     <h1 class="stitle"><span>${esc(tUi('materials'))}</span></h1>
-    <div class="card mb" style="background:linear-gradient(135deg,var(--sage-100) 0%,var(--sage-200) 100%)">
+    ${isAdmin()?`<div class="card mb" style="background:linear-gradient(135deg,var(--sage-100) 0%,var(--sage-200) 100%)">
       <h3 style="display:flex;align-items:center;gap:8px">${ICONS.upload} ${state.lang==='bn'?'PDF আপলোড':state.lang==='ne'?'PDF अपलोड':'Upload PDF'}</h3>
       <p class="small mt-sm" style="color:var(--sage-600)">${state.lang==='bn'?'IndexedDB-এ সংরক্ষিত। সর্বোচ্চ ১০০MB।':state.lang==='ne'?'IndexedDB मा भण्डारण। अधिकतम १००MB।':'Stored in IndexedDB. Max 100MB per file.'}</p>
       <button class="btn btn-primary mt-sm" data-action="material-upload">${ICONS.paperclip} ${state.lang==='bn'?'PDF আপলোড':state.lang==='ne'?'PDF अपलोड':'Upload PDF'}</button>
-    </div>
+    </div>`:''}
     <h2 class="stitle"><span>${state.lang==='bn'?'নির্বাচিত':state.lang==='ne'?'छानिएका':'Curated'}</span></h2>
     ${cats.map(cat=>`<h3 style="margin-top:16px;margin-bottom:8px;font-size:15px">${esc(cat)}</h3><div class="grid grid-2">${MATERIALS.filter(m=>m.cat===cat).map(m=>renderMaterialCard(m)).join('')}</div>`).join('')}
     <h2 class="stitle mt"><span>${state.lang==='bn'?'আমার আপলোড':state.lang==='ne'?'मेरा अपलोड':'My Uploads'}</span></h2>
@@ -2481,12 +2596,12 @@
   }
   function renderMaterialCard(m){
     const url=getMaterialUrl(m);
-    return `<div class="card"><div style="display:flex;align-items:flex-start;gap:10px"><div class="jp" style="font-size:28px;line-height:1">${m.icon}</div><div style="min-width:0;flex:1"><div style="font-weight:600;font-size:14px">${esc(t(m.title))}</div><div class="small">${esc(t(m.desc))}</div></div></div><div class="flex mt-sm">${url?`<a class="btn btn-primary" style="width:100%" href="${esc(url)}" target="_blank" rel="noopener" download>${ICONS.download} ${state.lang==='bn'?'ডাউনলোড':state.lang==='ne'?'डाउनलोड':'Download'}</a>`:`<button class="btn btn-soft" style="width:100%" data-action="material-set-url" data-id="${m.id}">${ICONS.paperclip} ${state.lang==='bn'?'URL যোগ':state.lang==='ne'?'URL थप':'Add URL'}</button>`}</div></div>`;
+    return `<div class="card"><div style="display:flex;align-items:flex-start;gap:10px"><div class="jp" style="font-size:28px;line-height:1">${m.icon}</div><div style="min-width:0;flex:1"><div style="font-weight:600;font-size:14px">${esc(t(m.title))}</div><div class="small">${esc(t(m.desc))}</div></div></div><div class="flex mt-sm">${url?`<a class="btn btn-primary" style="width:100%" href="${esc(url)}" target="_blank" rel="noopener" download>${ICONS.download} ${state.lang==='bn'?'ডাউনলোড':state.lang==='ne'?'डाउनलोड':'Download'}</a>`:(isAdmin()?`<button class="btn btn-soft" style="width:100%" data-action="material-set-url" data-id="${m.id}">${ICONS.paperclip} ${state.lang==='bn'?'URL যোগ':state.lang==='ne'?'URL थप':'Add URL'}</button>`:'')}</div></div>`;
   }
   function renderUploadsSection(uploads){
     if(uploads===null) return `<div class="card center text-muted">Loading…</div>`;
     if(!uploads||uploads.length===0) return `<div class="card center text-muted">${state.lang==='bn'?'এখনো কিছু নেই।':state.lang==='ne'?'अझै केही छैन।':'No uploads yet.'}</div>`;
-    return `<div class="grid grid-2">${uploads.map(u=>`<div class="card"><div class="flex-between"><div style="min-width:0;flex:1;display:flex;gap:8px;align-items:center"><div style="color:var(--sage-600)">${ICONS.file}</div><div style="min-width:0"><div style="font-weight:600;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(u.name)}</div><div class="small">${formatBytes(u.size)} · ${formatDate(u.uploadedAt)}</div></div></div><button class="icon-btn" data-action="material-delete" data-id="${esc(u.id)}">${ICONS.trash}</button></div><button class="btn btn-primary mt-sm" style="width:100%" data-action="material-download" data-id="${esc(u.id)}">${ICONS.download} ${state.lang==='bn'?'ডাউনলোড':state.lang==='ne'?'डाउनलोड':'Download'}</button></div>`).join('')}</div>`;
+    return `<div class="grid grid-2">${uploads.map(u=>`<div class="card"><div class="flex-between"><div style="min-width:0;flex:1;display:flex;gap:8px;align-items:center"><div style="color:var(--sage-600)">${ICONS.file}</div><div style="min-width:0"><div style="font-weight:600;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(u.name)}</div><div class="small">${formatBytes(u.size)} · ${formatDate(u.uploadedAt)}</div></div></div>${isAdmin()?`<button class="icon-btn" data-action="material-delete" data-id="${esc(u.id)}">${ICONS.trash}</button>`:''}</div><button class="btn btn-primary mt-sm" style="width:100%" data-action="material-download" data-id="${esc(u.id)}">${ICONS.download} ${state.lang==='bn'?'ডাউনলোড':state.lang==='ne'?'डाउनलोड':'Download'}</button></div>`).join('')}</div>`;
   }
   async function loadMaterialsUploads(){
     try{const uploads=await listUploads();uploads.sort((a,b)=>b.uploadedAt-a.uploadedAt);materialsCache.uploads=uploads;const el=document.getElementById('materialsUploads');if(el)el.innerHTML=renderUploadsSection(uploads);}
@@ -2564,6 +2679,7 @@
     <div class="card mt"><h3>${esc(tUi('dailyGoalLabel'))}</h3><input type="number" class="input mt-sm" id="goalInput" value="${state.dailyGoal}" min="5" max="100"></div>
     <div class="card mt"><h3>${ICONS.flame} ${esc(tUi('streak'))}</h3><p class="mt-sm">${state.streak.count} ${state.lang==='bn'?'দিন':state.lang==='ne'?'दिन':'days'}</p></div>
     <div class="card mt"><h3>${esc(tUi('progress'))}</h3><p class="mt-sm">${esc(tUi('lessonsCompleted'))}: ${state.lessonsCompleted.length} / ${GRAMMAR.length}</p><p>${esc(tUi('vocabLearned'))}: ${Object.keys(state.vocabLearned).length}</p><p>${esc(tUi('kanjiMastered'))}: ${Object.keys(state.kanjiLearned).length}</p><p>${esc(tUi('flashcards'))}: ${Object.keys(state.flashcards).length}</p></div>
+    <div class="card mt"><h3>Admin</h3>${isAdmin()?`<p class="small mt-sm">Logged in as admin. You can upload PDFs and see the dashboard.</p><div class="flex mt-sm"><a href="#/dashboard" class="btn btn-primary">${ICONS.barChart} ${esc(tUi('dashboard'))}</a><button class="btn btn-soft" data-action="admin-logout">Log out</button></div>`:`<p class="small mt-sm">Only the site owner can upload PDFs and view visitor stats.</p><div class="flex mt-sm"><input type="password" class="input" id="adminPw" placeholder="Admin password" style="flex:1"><button class="btn btn-primary" data-action="admin-login">Log in</button></div>`}</div>
     <div class="card mt" style="border-color:rgba(229,115,115,.4)"><h3 style="color:#c0392b">${esc(tUi('reset'))}</h3><p class="small mt-sm">${esc(tUi('resetConfirm'))}</p><button class="btn mt-sm" style="background:#e57373;color:#fff" data-action="reset-all">${ICONS.trash} ${esc(tUi('reset'))}</button></div>
   `;
   }
@@ -2607,6 +2723,9 @@
     if(action==='quiz-quit'){const wasMock=quizState.mockId;quizState={active:false,questions:[],index:0,answers:[],filter:0,timed:false,mockId:null};if(wasMock)location.hash='#/mocktests';render();return;}
     if(action==='quiz-restart'){quizState={active:false,questions:[],index:0,answers:[],filter:0,timed:false,mockId:null};render();return;}
     if(action==='quiz-retry-wrong'){const wrong=quizState.questions.filter((q,i)=>!quizState.answers[i]?.correct);const mockId=quizState.mockId;quizState={active:true,questions:wrong,index:0,answers:[],filter:quizState.filter,timed:false,mockId};state._quizSaved=false;render();return;}
+    if(action==='admin-login'){const pw=($('#adminPw')||{}).value;if(adminLogin(pw)){toast('Admin login OK');render();}else toast('Wrong password');return;}
+    if(action==='admin-logout'){adminLogout();toast('Logged out');render();return;}
+    if((action==='material-upload'||action==='material-delete'||action==='material-set-url')&&!isAdmin()){toast('Admin only');return;}
     if(action==='material-upload'){const input=document.createElement('input');input.type='file';input.accept='.pdf,application/pdf';input.onchange=async ev=>{const file=ev.target.files&&ev.target.files[0];if(!file)return;if(!file.name.toLowerCase().endsWith('.pdf')&&file.type!=='application/pdf'){toast('Only PDF files');return;}if(file.size>100*1024*1024){toast('File too large');return;}try{await saveUploadRecord(file);toast('Uploaded');await loadMaterialsUploads();}catch(err){toast('Upload failed');}};input.click();return;}
     if(action==='material-download'){handleDownloadUpload(target.dataset.id);return;}
     if(action==='material-delete'){handleDeleteUpload(target.dataset.id);return;}
@@ -2626,7 +2745,9 @@
     if(!location.hash) location.hash='#/';
     document.body.addEventListener('click',handleClick);
     initVoices();
+    const sh=document.getElementById('sakuraHeader');if(sh)sh.innerHTML=sakuraPetals(10,6,10,5,9);
     render();
+    trackView();
   }
   if(document.readyState!=='loading') init();
   else document.addEventListener('DOMContentLoaded',init);
