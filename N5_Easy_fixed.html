@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="referrer" content="no-referrer">
   <meta name="theme-color" content="#879F87">
   <title>N5 Easy — Learn Japanese</title>
   <link rel="icon" type="image/jpeg" href="https://i.ibb.co/mrs31N8h/Gemini-Generated-Image-j0m4s4j0m4s4j0m4.jpg">
@@ -191,6 +192,70 @@
       90%{opacity:var(--o,.85)}
       100%{transform:translate3d(var(--drift),calc(var(--h) + 30px),0) rotate(360deg);opacity:0}}
     @media(prefers-reduced-motion:reduce){.sakura-layer{display:none}}
+
+    /* ===== app feel / no zoom ===== */
+    html,body{touch-action:pan-x pan-y;-ms-touch-action:pan-x pan-y}
+    html{-webkit-text-size-adjust:100%;text-size-adjust:100%;overscroll-behavior:none}
+    body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+    input,textarea,select,[contenteditable]{-webkit-user-select:text;user-select:text;font-size:16px}
+    .input{font-size:16px}
+    img,svg{-webkit-user-drag:none;user-select:none}
+    #header{padding-top:env(safe-area-inset-top)}
+    /* ===== navbar v2 ===== */
+    .nav-desktop{padding:6px 4px;gap:2px}
+    .nav-link{flex-shrink:0;gap:0}
+    .nav-link span{max-width:0;opacity:0;overflow:hidden;white-space:nowrap;transition:max-width .4s cubic-bezier(.2,.8,.2,1),opacity .25s,margin .3s}
+    .nav-link.active span,.nav-link:hover span{max-width:150px;opacity:1;margin-left:6px}
+    @media(min-width:1750px){.nav-link span{max-width:150px;opacity:1;margin-left:6px}}
+    @media(prefers-reduced-motion:reduce){.nav-link span{transition:none}}
+    #header{background:linear-gradient(180deg,rgba(255,254,250,.94),rgba(242,250,245,.86));backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);border-bottom:none;box-shadow:0 6px 24px rgba(82,107,89,.10)}
+    .dark #header{background:linear-gradient(180deg,rgba(15,26,20,.94),rgba(22,36,27,.86));box-shadow:0 6px 24px rgba(0,0,0,.4)}
+    #header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,transparent,#A8D5BA,#F4A9BC,#A8D5BA,transparent);background-size:200% 100%;animation:navLine 6s linear infinite;pointer-events:none}
+    @keyframes navLine{to{background-position:200% 0}}
+    .header-inner{transition:padding .3s}
+    #header.scrolled .header-inner{padding-top:5px;padding-bottom:5px}
+    .brand-logo{box-shadow:0 0 0 2px var(--card-bg),0 0 0 4px #A8D5BA;transition:transform .6s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+    .brand:hover .brand-logo{transform:rotate(360deg) scale(1.08);box-shadow:0 0 0 2px var(--card-bg),0 0 0 4px #F4A9BC}
+    .nav-link{position:relative;overflow:hidden;padding:7px 13px;transition:color .25s,transform .25s,background .25s,box-shadow .25s}
+    .nav-link svg{transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+    .nav-link:hover:not(.active){transform:translateY(-1px);background:var(--sage-100);color:var(--sage-900)}
+    .dark .nav-link:hover:not(.active){color:#fff}
+    .nav-link:hover svg{transform:scale(1.2) rotate(-8deg)}
+    .nav-link.active{background:linear-gradient(135deg,#526B59,#6f9079);box-shadow:0 4px 14px rgba(82,107,89,.35);animation:navPop .45s cubic-bezier(.34,1.56,.64,1)}
+    .nav-link.active::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);animation:navShine 3.5s ease-in-out infinite;pointer-events:none}
+    @keyframes navPop{0%{transform:scale(.88)}100%{transform:scale(1)}}
+    @keyframes navShine{0%,60%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+    .icon-btn{transition:transform .25s,background .25s}
+    .icon-btn:hover{transform:rotate(15deg) scale(1.08)}
+    .icon-btn:active{transform:scale(.9)}
+    #mobile-menu.open{animation:menuDrop .3s ease both}
+    #mobile-menu.open a{animation:menuItem .35s cubic-bezier(.2,.8,.2,1) both}
+    @keyframes menuDrop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+    @keyframes menuItem{from{opacity:0;transform:translateY(8px) scale(.96)}to{opacity:1;transform:none}}
+    #mobile-menu.open a:nth-child(1){animation-delay:25ms}
+    #mobile-menu.open a:nth-child(2){animation-delay:50ms}
+    #mobile-menu.open a:nth-child(3){animation-delay:75ms}
+    #mobile-menu.open a:nth-child(4){animation-delay:100ms}
+    #mobile-menu.open a:nth-child(5){animation-delay:125ms}
+    #mobile-menu.open a:nth-child(6){animation-delay:150ms}
+    #mobile-menu.open a:nth-child(7){animation-delay:175ms}
+    #mobile-menu.open a:nth-child(8){animation-delay:200ms}
+    #mobile-menu.open a:nth-child(9){animation-delay:225ms}
+    #mobile-menu.open a:nth-child(10){animation-delay:250ms}
+    #mobile-menu.open a:nth-child(11){animation-delay:275ms}
+    #mobile-menu.open a:nth-child(12){animation-delay:300ms}
+    #mobile-menu.open a:nth-child(13){animation-delay:325ms}
+    #mobile-menu.open a:nth-child(14){animation-delay:350ms}
+    #mobile-menu.open a:nth-child(15){animation-delay:375ms}
+    #mobile-menu.open a:nth-child(16){animation-delay:400ms}
+    #mobile-menu.open a:nth-child(17){animation-delay:425ms}
+    #mobile-menu.open a:nth-child(18){animation-delay:450ms}
+    #mobile-menu a.active{background:linear-gradient(135deg,#526B59,#6f9079)}
+    .bn-icon{transition:transform .35s cubic-bezier(.34,1.56,.64,1),background .25s,box-shadow .25s}
+    .bn-item.active .bn-icon{background:linear-gradient(135deg,var(--sage-100),#FDE4EA);transform:translateY(-3px) scale(1.12);box-shadow:0 4px 12px rgba(82,107,89,.25)}
+    .dark .bn-item.active .bn-icon{background:linear-gradient(135deg,#233a2c,#3a2a31)}
+    @media(prefers-reduced-motion:reduce){#header::after,.nav-link.active,.nav-link.active::after,#mobile-menu.open,#mobile-menu.open a{animation:none}}
+
 
     /* Universities: photo + info */
     .uni-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:16px}
@@ -383,6 +448,8 @@
     mockTests: T('Mock Tests','মক টেস্ট','मक टेस्ट'),
     universities: T('Universities','বিশ্ববিদ্যালয়','विश्वविद्यालय'),
     materials: T('N5 Materials','N5 মেটেরিয়াল','N5 सामग्री'),
+    audio: T('Audio','অডিও','अडियो'),
+    bgrammar: T('Bangla Grammar','বাংলা গ্রামার','बंगला व्याकरण'),
     quiz: T('Quiz','কুইজ','क्विज'),
     memoryLab: T('Memory Lab','মনে রাখার কৌশল','स्मृति प्रयोगशाला'),
     bookmarks: T('Bookmarks','বুকমার্ক','बुकमार्क'),
@@ -1956,7 +2023,40 @@
   /* ============ AUDIO ============ */
   const speakState={ja:null,warned:false};
   function initVoices(){if(!('speechSynthesis'in window))return;const load=()=>{const voices=speechSynthesis.getVoices();speakState.ja=voices.find(v=>v.lang==='ja-JP')||voices.find(v=>v.lang.startsWith('ja'));};load();speechSynthesis.onvoiceschanged=load;}
-  function speak(text,btn){if(!('speechSynthesis'in window)){toast('Audio not supported');return;}try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='ja-JP';u.rate=0.85;if(!speakState.ja){const vs=speechSynthesis.getVoices();speakState.ja=vs.find(v=>v.lang==='ja-JP')||vs.find(v=>v.lang.startsWith('ja'));}if(speakState.ja)u.voice=speakState.ja;else if(!speakState.warned){speakState.warned=true;toast('No Japanese voice');}if(btn){btn.classList.add('speaking');setTimeout(()=>btn.classList.remove('speaking'),650);}speechSynthesis.speak(u);}catch(e){toast('Audio error');}}
+  function ttsUrls(text){const q=encodeURIComponent(text);return[
+    'https://translate.googleapis.com/translate_tts?ie=UTF-8&client=gtx&tl=ja&q='+q,
+    'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=ja&q='+q,
+    'https://translate.google.com/translate_tts?ie=UTF-8&client=gtx&tl=ja&q='+q];}
+  function speakOnline(text,i){
+    i=i||0;
+    try{
+      const urls=ttsUrls(text);
+      if(i>=urls.length){toast('Japanese voice unavailable. Check internet or install "Speech Services by Google" (Japanese voice).');return;}
+      if(speakState.el){try{speakState.el.pause();}catch(e){}}
+      const a=new Audio();speakState.el=a;
+      a.preload='auto';a.referrerPolicy='no-referrer';a.setAttribute('playsinline','');
+      a.onerror=()=>{if(speakState.el===a)speakOnline(text,i+1);};
+      a.src=urls[i];a.playbackRate=0.9;
+      const pr=a.play();
+      if(pr&&pr.catch)pr.catch(err=>{if(speakState.el===a&&!(err&&err.name==='AbortError'))speakOnline(text,i+1);});
+    }catch(e){speakOnline(text,(i||0)+1);}
+  }
+  function speak(text,btn){
+    if(btn){btn.classList.add('speaking');setTimeout(()=>btn.classList.remove('speaking'),650);}
+    const nat=window.AndroidTTS||window.Android;
+    if(nat&&typeof nat.speak==='function'){try{nat.speak(text,'ja-JP');return;}catch(e){}}
+    if(!('speechSynthesis'in window)||typeof SpeechSynthesisUtterance==='undefined'){speakOnline(text);return;}
+    try{
+      speechSynthesis.cancel();
+      if(!speakState.ja){const vs=speechSynthesis.getVoices();speakState.ja=vs.find(v=>v.lang==='ja-JP'||v.lang==='ja_JP')||vs.find(v=>/^ja/i.test(v.lang));}
+      if(!speakState.ja){speakOnline(text);return;}
+      const u=new SpeechSynthesisUtterance(text);u.lang='ja-JP';u.rate=0.85;u.voice=speakState.ja;
+      let started=false,fell=false;const fb=()=>{if(!fell){fell=true;try{speechSynthesis.cancel();}catch(e){}speakOnline(text);}};
+      u.onstart=()=>{started=true;};u.onerror=()=>{if(!started)fb();};
+      speechSynthesis.speak(u);
+      setTimeout(()=>{if(!started&&!speechSynthesis.speaking)fb();},1200);
+    }catch(e){speakOnline(text);}
+  }
   function speakBtn(text){return `<button class="speak-btn" data-speak="${esc(text)}" aria-label="${esc(tUi('listen'))}">${ICONS.volume}</button>`;}
 
   /* ============ ADMIN + ANALYTICS ============ */
@@ -2033,6 +2133,7 @@
   const NAV=[
     {path:'/',key:'home',icon:'home'},
     {path:'/lessons',key:'lessons',icon:'book'},
+    {path:'/bgrammar',key:'bgrammar',icon:'bookA'},
     {path:'/particles',key:'particles',icon:'zap'},
     {path:'/vocabulary',key:'vocabulary',icon:'layers'},
     {path:'/hiragana',key:'hiragana',icon:'bookA'},
@@ -2043,6 +2144,7 @@
     {path:'/quiz',key:'quiz',icon:'target'},
     {path:'/mocktests',key:'mockTests',icon:'target'},
     {path:'/materials',key:'materials',icon:'file'},
+    {path:'/audio',key:'audio',icon:'volume'},
     {path:'/memory',key:'memoryLab',icon:'lightbulb'},
     {path:'/universities',key:'universities',icon:'graduation'},
     {path:'/bookmarks',key:'bookmarks',icon:'bookmark'},
@@ -2062,6 +2164,7 @@
     const isActive = p => p==='/'?path==='/':path.startsWith(p);
     const navD = $('#navDesktop');
     if(navD) navD.innerHTML = navItems().map(n=>`<a href="#${n.path}" class="nav-link ${isActive(n.path)?'active':''}">${ICONS[n.icon]||''}<span>${esc(tUi(n.key))}</span></a>`).join('');
+    if(navD){const a=navD.querySelector('.active');if(a)navD.scrollLeft+=a.getBoundingClientRect().left-navD.getBoundingClientRect().left-(navD.clientWidth-a.offsetWidth)/2;}
     const mm = $('#mobile-menu');
     if(mm) mm.innerHTML = navItems().map(n=>`<a href="#${n.path}" class="${isActive(n.path)?'active':''}">${ICONS[n.icon]||''}<span>${esc(tUi(n.key))}</span></a>`).join('');
     const bn = $('#bnInner');
@@ -2107,6 +2210,9 @@
       else if(parts[0]==='reference') html = renderReference();
       else if(parts[0]==='universities') html = renderUniversities();
       else if(parts[0]==='mocktests') html = renderMockTests();
+      else if(parts[0]==='bgrammar'&&parts[1]) html = renderBGLesson(+parts[1]);
+      else if(parts[0]==='bgrammar') html = renderBGList();
+      else if(parts[0]==='audio') html = renderAudio();
       else if(parts[0]==='materials') html = renderMaterials();
       else if(parts[0]==='dashboard') html = renderDashboard();
       else html = `<div class="card center"><h2>404 — Page not found</h2><p class="text-muted mt-sm">${esc(path)}</p><p class="mt"><a href="#/" class="btn btn-primary">${ICONS.arrowLeft} ${esc(tUi('home'))}</a></p></div>`;
@@ -2119,6 +2225,7 @@
     bindInputs();
     window.scrollTo({top:0,behavior:'instant'});
     if (parts[0]==='materials') loadMaterialsUploads();
+    if (parts[0]==='audio') loadAudioList();
   }
   /* In-app navigation history, used by the Back button on every menu page */
   const navStack=[];
@@ -2175,7 +2282,6 @@
     return `
     <section class="hero" aria-label="${esc(tUi('appName'))}">
       <div class="hero-deco" aria-hidden="true"><span>あ</span><span>ア</span><span>日</span><span>本</span><span>桜</span><span>語</span></div>
-      <div class="sakura-layer" aria-hidden="true">${sakuraPetals(18,8,16,7,12)}</div>
       <div class="hero-lang" role="group" aria-label="${esc(tr3('Language','ভাষা','भाषा'))}">${[['en','English'],['bn','বাংলা'],['ne','नेपाली']].map(([c,n])=>`<button type="button" class="hero-lang-btn ${state.lang===c?'active':''}" data-action="lang" data-lang="${c}" aria-pressed="${state.lang===c}">${n}</button>`).join('')}</div>
       <div class="hero-top">
         <div class="hero-text">
@@ -2604,11 +2710,82 @@
     return `<div class="grid grid-2">${uploads.map(u=>`<div class="card"><div class="flex-between"><div style="min-width:0;flex:1;display:flex;gap:8px;align-items:center"><div style="color:var(--sage-600)">${ICONS.file}</div><div style="min-width:0"><div style="font-weight:600;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(u.name)}</div><div class="small">${formatBytes(u.size)} · ${formatDate(u.uploadedAt)}</div></div></div>${isAdmin()?`<button class="icon-btn" data-action="material-delete" data-id="${esc(u.id)}">${ICONS.trash}</button>`:''}</div><button class="btn btn-primary mt-sm" style="width:100%" data-action="material-download" data-id="${esc(u.id)}">${ICONS.download} ${state.lang==='bn'?'ডাউনলোড':state.lang==='ne'?'डाउनलोड':'Download'}</button></div>`).join('')}</div>`;
   }
   async function loadMaterialsUploads(){
-    try{const uploads=await listUploads();uploads.sort((a,b)=>b.uploadedAt-a.uploadedAt);materialsCache.uploads=uploads;const el=document.getElementById('materialsUploads');if(el)el.innerHTML=renderUploadsSection(uploads);}
+    try{const uploads=(await listUploads()).filter(u=>u.kind!=='audio');uploads.sort((a,b)=>b.uploadedAt-a.uploadedAt);materialsCache.uploads=uploads;const el=document.getElementById('materialsUploads');if(el)el.innerHTML=renderUploadsSection(uploads);}
     catch(e){materialsCache.uploads=[];const el=document.getElementById('materialsUploads');if(el)el.innerHTML=`<div class="card center text-muted">IndexedDB unavailable</div>`;}
   }
   async function handleDownloadUpload(id){try{const r=await getUploadRecord(id);if(!r){toast('Not found');return;}const url=URL.createObjectURL(r.blob);const a=document.createElement('a');a.href=url;a.download=r.name;document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(()=>URL.revokeObjectURL(url),5000);}catch(e){toast('Download failed');}}
   async function handleDeleteUpload(id){if(!confirm('Delete?'))return;try{await deleteUploadRecord(id);toast('Deleted');await loadMaterialsUploads();}catch(e){toast('Delete failed');}}
+
+
+  /* ============ AUDIO ============ */
+  /* Built-in tracks (visible to every visitor): put the files next to this HTML, e.g. in an "audio" folder, and list them here:
+     {id:'a1',lesson:1,title:'Lesson 1 - Conversation',url:'audio/lesson01.mp3'} */
+  const AUDIO_TRACKS=[];
+  const AUDIO_URLS_KEY='n5easy-audio-urls';
+  function loadAudioUrls(){try{return JSON.parse(localStorage.getItem(AUDIO_URLS_KEY)||'[]');}catch{return[];}}
+  function saveAudioUrls(a){try{localStorage.setItem(AUDIO_URLS_KEY,JSON.stringify(a));}catch{}}
+  const audioCache={local:[],objUrls:{}};
+  let audioLesson=0, audioRate=1;
+  function saveAudioRecord(file,lesson,title){return openMaterialsDB().then(db=>new Promise((res,rej)=>{const r={id:'au-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),kind:'audio',lesson,title,name:file.name,size:file.size,type:file.type||'audio/mpeg',uploadedAt:Date.now(),blob:file};const req=db.transaction('pdfs','readwrite').objectStore('pdfs').add(r);req.onsuccess=()=>res(r);req.onerror=e=>rej(e.target.error);}));}
+  function allAudioTracks(){
+    return [
+      ...AUDIO_TRACKS.map(x=>({...x,kind:'built',src:x.url})),
+      ...loadAudioUrls().map(x=>({...x,kind:'url',src:x.url})),
+      ...audioCache.local.map(r=>({id:r.id,lesson:r.lesson||0,title:r.title||r.name,kind:'local',src:audioCache.objUrls[r.id]||''}))
+    ].filter(x=>!audioLesson||x.lesson===audioLesson).sort((a,b)=>(a.lesson||99)-(b.lesson||99));
+  }
+  function renderAudioList(){
+    const list=allAudioTracks();
+    if(!list.length) return `<div class="card center text-muted">${audioLesson?'No audio for this lesson yet.':'No audio yet.'}</div>`;
+    return `<div class="grid grid-2">${list.map(a=>`<div class="card"><div class="flex-between"><div style="min-width:0;flex:1"><div style="font-weight:600;font-size:14px;overflow:hidden;text-overflow:ellipsis">${esc(a.title)}</div><span class="pill mint">${a.lesson?'Lesson '+a.lesson:'General'}</span></div>${isAdmin()&&a.kind!=='built'?`<button class="icon-btn" data-action="audio-delete" data-id="${esc(a.id)}" data-kind="${a.kind}" aria-label="Delete">${ICONS.trash}</button>`:''}</div><audio class="mt-sm" controls preload="none" src="${esc(a.src)}" style="width:100%"></audio></div>`).join('')}</div>`;
+  }
+  function applyAudioRate(){document.querySelectorAll('#audioList audio').forEach(a=>{a.playbackRate=audioRate;a.addEventListener('play',()=>{a.playbackRate=audioRate;document.querySelectorAll('#audioList audio').forEach(o=>{if(o!==a)o.pause();});},{once:false});});}
+  async function loadAudioList(){
+    try{const all=await listUploads();audioCache.local=all.filter(u=>u.kind==='audio');audioCache.local.forEach(r=>{if(!audioCache.objUrls[r.id])audioCache.objUrls[r.id]=URL.createObjectURL(r.blob);});}catch{audioCache.local=[];}
+    const el=document.getElementById('audioList');if(el){el.innerHTML=renderAudioList();applyAudioRate();}
+  }
+  function renderAudio(){
+    return `<h1 class="stitle"><span>${esc(tUi('audio'))}</span><p>Listening practice, lesson by lesson</p></h1>
+  ${isAdmin()?`<div class="card mb"><h3>${ICONS.upload} Add audio</h3><p class="small mt-sm">Uploads stay in this browser only. For audio every visitor can hear, add the files next to this HTML and list them in AUDIO_TRACKS, or add a URL.</p><div class="flex mt-sm"><button class="btn btn-primary" data-action="audio-upload">${ICONS.paperclip} Upload file</button><button class="btn btn-soft" data-action="audio-add-url">Add URL</button></div></div>`:''}
+  <div class="flex mb" style="flex-wrap:wrap;gap:6px"><span class="small">Speed:</span>${[0.75,1,1.25].map(r=>`<button class="chip ${audioRate===r?'active':''}" data-action="audio-rate" data-rate="${r}">${r}x</button>`).join('')}</div>
+  <div class="flex mb" style="flex-wrap:wrap;gap:6px"><button class="chip ${!audioLesson?'active':''}" data-action="audio-lesson" data-lesson="0">All</button>${Array.from({length:25},(_,i)=>i+1).map(l=>`<button class="chip ${audioLesson===l?'active':''}" data-action="audio-lesson" data-lesson="${l}">L${l}</button>`).join('')}</div>
+  <div id="audioList">${renderAudioList()}</div>`;
+  }
+
+  /* ============ BANGLA GRAMMAR ============ */
+  const BG=[
+    ['は・です・か・も・の',['N1 は N2 です = "N1 হলো N2"। は টপিকের পরে বসে, বাক্য です দিয়ে শেষ হয়।','নেতিবাচক: じゃありません (ではありません)। প্রশ্ন: বাক্যের শেষে か বসে।','も = "-ও" (একই জিনিস হলে)। の = "-র/-এর" (মালিকানা, পরিচয়)।'],[['わたしは がくせいです。','আমি ছাত্র।'],['カリナさんは エンジニアじゃありません。','কারিনা ইঞ্জিনিয়ার নন।'],['サントスさんも かいしゃいんです。','সান্তোসও অফিস কর্মী।']]],
+    ['これ・それ・あれ / この・その・あの',['これ/それ/あれ (এটা/সেটা/ওটা) একা বসে, পরে は বসে। この/その/あの (এই/সেই/ঐ) এর পরে সরাসরি noun বসে।','হ্যাঁ-না প্রশ্নের উত্তর: はい、そうです / いいえ、そうじゃありません।','"A নাকি B?" হলে A ですか、B ですか বলে, উত্তরে সঠিকটি সরাসরি বলতে হয়।'],[['これは ほんです。','এটা বই।'],['その かばんは わたしのです。','সেই ব্যাগটি আমার।'],['これは ほんですか、ノートですか。…ノートです。','এটা বই না খাতা? খাতা।']]],
+    ['ここ・そこ・あそこ・どこ',['ここ (এখানে), そこ (সেখানে), あそこ (ওখানে), どこ (কোথায়)। দিক/ভদ্র রূপ: こちら, そちら, あちら, どちら।','N1 は place です। দেশের সাথে の: にほんの とけい = জাপানের ঘড়ি।'],[['トイレは あそこです。','টয়লেট ওখানে।'],['がっこうは どこですか。','স্কুল কোথায়?'],['これは にほんの とけいです。','এটা জাপানের ঘড়ি।']]],
+    ['〜じ〜ふん・ます形・に・から・まで・と',['সময়: 〜じ (ঘণ্টা), 〜ふん/ぷん (মিনিট)। ৪টা = よじ, ৭টা = しちじ, ৯টা = くじ।','ます-যুক্ত verb: বর্তমান/ভবিষ্যৎ たべます, অতীত たべました, নেতিবাচক たべません, অতীত নেতিবাচক たべませんでした।','নির্দিষ্ট সময়/তারিখ/বারের পরে に। から = থেকে, まで = পর্যন্ত, と = "এবং/সাথে"।'],[['まいあさ 6じに おきます。','প্রতিদিন সকাল ৬টায় উঠি।'],['9じから 5じまで はたらきます。','৯টা থেকে ৫টা পর্যন্ত কাজ করি।'],['きのう べんきょうしませんでした。','গতকাল পড়াশোনা করিনি।']]],
+    ['へ・で・と・どこも・よ',['চলার verb (いきます/きます/かえります) এর আগে গন্তব্যের পরে へ (に ও চলে)। へ এখানে "e" উচ্চারণ হয়।','で = যানবাহন/উপায় ও কাজের স্থান (バスで, レストランで)। ভাষা: にほんごで।','どこも/だれも/なにも এর সাথে verb সবসময় নেতিবাচক। বাক্যের শেষে よ = নিজের জানা তথ্য জোর দিয়ে বলা।'],[['わたしは バスで がっこうへ いきます。','আমি বাসে স্কুলে যাই।'],['ともだちと デパートへ いきます。','বন্ধুর সাথে ডিপার্টমেন্ট স্টোরে যাই।'],['あした どこも いきません。','আগামীকাল কোথাও যাব না।']]],
+    ['を・なに・ませんか・ましょう',['Transitive verb এর object এর পরে を বসে। "কী?" = なにを।','V ませんか = প্রস্তাব ("করবেন না কি?")। রাজি হলে V ましょう।','কাজের স্থান: place + で (こうえんで あそびます)।'],[['パンを たべます。','আমি পাউরুটি খাই।'],['いっしょに ひるごはんを たべませんか。','একসাথে দুপুরের খাবার খাবেন কি?'],['ええ、たべましょう。','হ্যাঁ, খাই।']]],
+    ['で（道具・言語）・あげます/もらいます・もう/まだ',['で = যন্ত্র/উপায়/ভাষা: はしで たべます, にほんごで はなします।','あげます (দিই), もらいます (পাই), おしえます (শেখাই): যাকে দেওয়া হয় তার পরে に; もらいます এ に বা から ব্যবহার হয়।','もう + অতীত = ইতিমধ্যে করেছি; まだ + নেতিবাচক = এখনো করিনি (উত্তরে まだです)।'],[['はしで ごはんを たべます。','চপস্টিক দিয়ে ভাত খাই।'],['ともだちに はなを あげました。','বন্ধুকে ফুল দিয়েছি।'],['もう ひるごはんを たべましたか。…いいえ、まだです。','ইতিমধ্যে দুপুরের খাবার খেয়েছেন? না, এখনো না।']]],
+    ['い形容詞・な形容詞・が・とても',['い-adjective শেষে い (たかい); বাকি সব な-adjective (しずか)। きれい, きらい, ゆうめい い-তে শেষ হলেও な-adj।','い-adj: さむい → さむかった / さむくない / さむくなかった (+です)। な-adj noun এর মতো: きれいです / きれいでした / きれいじゃありません।','noun এর আগে: きれいな はな, あたらしい ほん। 〜が〜 = "কিন্তু"; そして = "এবং"; とても = খুব।'],[['きょうの てんきは さむいです。','আজকের আবহাওয়া ঠাণ্ডা।'],['きれいな はなです。','সুন্দর ফুল।'],['にほんごは むずかしいですが、おもしろいです。','জাপানি কঠিন কিন্তু মজার।']]],
+    ['が（好き・分かる・ある）・どんな・どうして〜から',['あります/わかります/できます এবং すき/じょうず/へた/ほしい এর object এর পরে が বসে।','よく/だいたい/すこし হ্যাঁ-বাচক; あまり/ぜんぜん নেতিবাচকের সাথে। たくさん/すこし あります এর সাথে বসে।','どんな + noun = কেমন ধরনের। どうして = কেন; উত্তরে কারণ + から।'],[['わたしは ねこが すきです。','আমি বিড়াল পছন্দ করি।'],['ひらがなが すこし わかります。','হিরাগানা একটু বুঝি।'],['どうして きませんでしたか。…びょうきでしたから。','কেন আসেননি? অসুস্থ ছিলাম বলে।']]],
+    ['あります・います・場所の言葉・や',['জড় বস্তু = あります, প্রাণী/মানুষ = います। অস্তিত্ব: place に N が あります/います।','অবস্থান: N は place に あります/います। অবস্থান শব্দ: うえ, した, まえ, うしろ, なか, となり, ちかく — N1 の うえに।','や = "ও আরও" (কয়েকটি উদাহরণ); শেষ noun এর পরে など যোগ করা যায়।'],[['つくえの うえに ほんが あります。','ডেস্কের উপরে বই আছে।'],['ねこは いすの したに います。','বিড়ালটি চেয়ারের নিচে আছে।'],['はこの なかに ペンや えんぴつが あります。','বাক্সে কলম, পেন্সিল ইত্যাদি আছে।']]],
+    ['数え方・だけ・〜かい',['গণনার শব্দ (ひとつ, 2だい, 3さつ...) object particle ও verb এর মাঝে বসে, নিজে কোনো particle নেয় না।','কতবার: 〜かい (1かげつに 2かい)। কতক্ষণ: 〜じかん, 〜しゅうかん, 〜かげつ। একাধিক গণনা যোগে と।','だけ = শুধু; সংখ্যা/noun এর পরে বসে, verb হ্যাঁ-বাচক হয়।'],[['りんごを みっつ かいました。','৩টি আপেল কিনেছি।'],['ともだちが ふたり います。','দুইজন বন্ধু আছে।'],['コーヒーだけ のみます。','শুধু কফি খাই।']]],
+    ['過去（名詞・な形容詞）・より・どちら・いちばん',['noun / な-adj অতীত: でした; নেতিবাচক: じゃありませんでした।','তুলনা: N1 は N2 より adj です (N2 এর চেয়ে)। প্রশ্ন: N1 と N2 と どちらが adj ですか; উত্তর: N1 のほうが adj です।','সবচেয়ে: গ্রুপ の なかで なにが いちばん adj ですか।'],[['きのうは あめでした。','গতকাল বৃষ্টি ছিল।'],['バスより でんしゃのほうが はやいです。','বাসের চেয়ে ট্রেন দ্রুত।'],['くだもので なにが いちばん すきですか。','ফলের মধ্যে কোনটা সবচেয়ে পছন্দ?']]],
+    ['ほしい・〜たい・〜に いきます',['ほしい (চাই) একটি い-adj: N が ほしいです; ほしくないです, ほしかったです।','V ます → V たい (করতে চাই); たいです/たくないです/たかったです।','উদ্দেশ্য: V ます-stem に いきます/きます/かえります; বা noun に (かいものに)।'],[['わたしは くるまが ほしいです。','আমি গাড়ি চাই।'],['にほんへ いきたいです。','জাপানে যেতে চাই।'],['レストランへ ひるごはんを たべに いきます。','রেস্তোরাঁয় দুপুরের খাবার খেতে যাই।']]],
+    ['動詞のグループ・て形・〜てください・〜ています・〜ましょうか',['Verb ৩ গ্রুপ: G1 (ます-এর আগে い-কলামের বর্ণ: かきます), G2 (え-কলাম: たべます), G3 (きます, します, noun+します)।','て form: G1 き→いて, ぎ→いで, み/び/に→んで, り/ち/い→って, し→して; G2: ます বাদ + て; G3: きて, して। (ব্যতিক্রম: いきます→いって)।','V て ください = অনুরোধ। V て います = চলছে/অবস্থা। V ましょうか = সাহায্যের প্রস্তাব।'],[['ここに なまえを かいてください。','এখানে নাম লিখুন।'],['いま にほんごを べんきょうしています。','এখন জাপানি পড়ছি।'],['にもつを もちましょうか。','মালটা ধরব কি?']]],
+    ['〜てもいいです・〜てはいけません・状態',['V て もいいですか = অনুমতি চাওয়া। V て は いけません = নিষেধ।','V て います: অবস্থা/অভ্যাস — すんでいます (বাস করি), しっています (জানি; নেতিবাচক しりません), もっています (আছে)।','কিছু verb এর আগের noun এ に: すわります, のります, つきます, はいります, あいます।'],[['ここで しゃしんを とってもいいですか。','এখানে ছবি তুলতে পারি কি?'],['ここで たばこを すってはいけません。','এখানে ধূমপান নিষেধ।'],['ともだちに あいます。','বন্ধুর সাথে দেখা করি।']]],
+    ['て形でつなぐ・〜てから・形容詞のて形',['একাধিক কাজ পরপর: শুধু শেষ verb এ tense, আগেরগুলো て form: おきて、あらって、たべます।','い-adj: い→くて (ひろくて); な-adj/noun: で (きれいで, がくせいで)।','V1 て から V2 = V1 শেষ হওয়ার পরে V2।'],[['あさ おきて、かおを あらって、ごはんを たべます。','সকালে উঠে মুখ ধুয়ে খাই।'],['この へやは ひろくて あかるいです。','এই ঘরটা প্রশস্ত ও আলোকিত।'],['しごとが おわってから、うちへ かえります。','কাজ শেষ করে বাসায় ফিরি।']]],
+    ['ない形・〜ないでください・〜なければなりません・〜なくてもいいです',['ない form: G1 শেষ বর্ণ あ-কলামে + ない (かく→かかない; かう→かわない; ある→ない)। G2: ます বাদ + ない। G3: こない, しない।','V ないで ください = করবেন না। V なければ なりません = অবশ্যই করতে হবে। V なくても いいです = না করলেও চলে।','までに = সময়সীমার মধ্যে (5じまでに)।'],[['ここで たばこを すわないでください。','এখানে ধূমপান করবেন না।'],['まいにち べんきょうしなければなりません。','প্রতিদিন পড়তে হবে।'],['あした こなくてもいいです。','আগামীকাল না এলেও চলবে।']]],
+    ['辞書形・〜ことができます・しゅみ・〜まえに',['dictionary form: G1 い-কলাম→う-কলাম (かきます→かく); G2: ます→る (たべる); G3: くる, する।','N が できます / V dict. + ことが できます = পারি। しゅみは N です / V dict. + ことです = শখ।','V dict. + まえに = করার আগে; noun + の まえに; সময় + まえに।'],[['わたしは ひらがなを かくことが できます。','আমি হিরাগানা লিখতে পারি।'],['しゅみは えいがを みることです。','শখ মুভি দেখা।'],['ねる まえに はを みがきます。','ঘুমানোর আগে দাঁত মাজি।']]],
+    ['た形・〜たことがあります・〜たり〜たりします・なります',['た form = て form এর て→た, で→だ। V た ことが あります = অভিজ্ঞতা আছে।','V たり、V たり します = কয়েকটি কাজের উদাহরণ (ক্রম নেই)।','い-adj → くなります; な-adj/noun → に なります = হয়ে যাওয়া।'],[['にほんへ いった ことが あります。','জাপানে যাওয়ার অভিজ্ঞতা আছে।'],['にちようびは さんぽしたり、ほんを よんだり します。','রবিবারে হাঁটি, বই পড়ি ইত্যাদি।'],['さむく なりました。','ঠাণ্ডা হয়ে গেছে।']]],
+    ['普通形（くだけた言い方）',['Polite → plain: たべます→たべる, たべました→たべた, たべません→たべない, たべませんでした→たべなかった।','い-adj: おいしいです→おいしい, おいしくないです→おいしくない। noun/な-adj: です→だ, でした→だった, じゃありません→じゃない, じゃありませんでした→じゃなかった।','plain form বন্ধু/পরিবারের সাথে কথায় ব্যবহৃত হয়।'],[['わたしは がくせいだ。','আমি ছাত্র।'],['きのう にほんへ いった。','গতকাল জাপানে গিয়েছি।'],['この りんごは おいしくなかった。','এই আপেল সুস্বাদু ছিল না।']]],
+    ['〜と おもいます・〜と いいます・〜でしょう',['plain form + と おもいます = মনে হয়/ভাবি। plain form + と いいます/いいました = বলে/বলেছে।','plain form + でしょう？ = তাই না? noun/な-adj বর্তমানে だ বসে না: ひまでしょう।','সরাসরি উদ্ধৃতি 「 」 এর ভিতরে; পরোক্ষ উক্তিতে plain form।'],[['あしたは あめが ふると おもいます。','আগামীকাল বৃষ্টি হবে মনে হয়।'],['やまださんは あした くると いいました。','ইয়ামাদা বলেছে আগামীকাল আসবে।'],['あしたは ひまでしょう？','আগামীকাল ফ্রি, তাই না?']]],
+    ['名詞を修飾する文・じかん/やくそく/ようじ',['বাক্য দিয়ে noun বর্ণনা: plain form + noun; বর্ণনার ভিতরে কর্তার পরে は নয়, が বসে।','い-adj/な-adj noun এর আগে: おおきい かばん, きれいな まち।','V dict. + じかん/やくそく/ようじ が あります = করার সময়/কথা/কাজ আছে।'],[['これは わたしが かった かばんです。','এটা আমার কেনা ব্যাগ।'],['ともだちに あう やくそくが あります。','বন্ধুর সাথে দেখা করার কথা আছে।'],['わたしが すんでいる まちは しずかです。','আমি যে শহরে থাকি সেটি শান্ত।']]],
+    ['〜とき・〜と（自動的）・を（移動）',['S1 plain form + とき、S2 = যখন। な-adj এ な, noun এ の: しずかな とき, あめの とき।','V dict. + と、S2 = এটা করলে স্বাভাবিকভাবে ওটা হয় (ボタンを おすと みずが でます)।','চলার verb (さんぽします, わたります, まがります, でます, おります, あるきます, はしります) এর জায়গার পরে を।'],[['にほんへ いくとき、ケータイを かいます。','জাপানে যাওয়ার সময় ফোন কিনব।'],['この ボタンを おすと、みずが でます。','এই বোতাম চাপলে পানি বের হয়।'],['こうえんを さんぽします。','পার্কে হাঁটি।']]],
+    ['くれます・〜てあげます/〜てくれます/〜てもらいます',['অন্য কেউ আমাকে/আমার পরিবারকে দিলে くれます (わたしに বাদ দেওয়া যায়); আমি অন্যকে দিলে あげます; পেলে もらいます।','V て あげます = (আমি অন্যের জন্য) করে দিই। V て くれます = (অন্য কেউ আমার জন্য) করে দেয়। V て もらいます = করিয়ে নিই/সাহায্য পাই।','あげます/くれます এ কর্তার পরে が/は, もらいます এ করে-দেওয়া ব্যক্তির পরে に।'],[['ともだちが わたしに ほんを くれました。','বন্ধু আমাকে বই দিয়েছে।'],['ともだちに にほんごを おしえて あげました。','বন্ধুকে জাপানি শিখিয়ে দিয়েছি।'],['やまださんに てつだって もらいました。','ইয়ামাদার সাহায্য পেয়েছি।']]],
+    ['〜たら・〜ても',['plain past form + ら = যদি/হলে; もし আগে বসাতে পারে (いったら, いかなかったら, さむかったら, びょうきだったら)।','V て も / い-adj くても / noun・な-adj でも = হলেও/সত্ত্বেও। নেতিবাচক: 〜なくても।','দুই ক্ষেত্রেই S2 স্বাভাবিক রূপে থাকে।'],[['あめが ふったら、いきません。','বৃষ্টি হলে যাব না।'],['にほんへ いったら、すしを たべたいです。','জাপানে গেলে সুশি খেতে চাই।'],['やすくても、かいません。','সস্তা হলেও কিনব না।']]]
+  ];
+  function renderBGList(){return `<h1 class="stitle"><span>${esc(tUi('bgrammar'))}</span><p>বাংলায় জাপানি ব্যাকরণ, পাঠ অনুযায়ী</p></h1><div class="grid grid-2">${BG.map((l,i)=>`<div class="card"><div class="pill mint">Lesson ${i+1}</div><h3 class="jp mt-sm" style="font-size:16px">${esc(l[0])}</h3><a class="btn btn-primary mt-sm" style="width:100%" href="#/bgrammar/${i+1}">Open</a></div>`).join('')}</div>`;}
+  function renderBGLesson(n){const l=BG[n-1];if(!l)return `<div class="card center">Not found</div>`;
+    return `<h1 class="stitle"><span>Lesson ${n}</span><p class="jp">${esc(l[0])}</p></h1>
+  <div class="card"><ol style="padding-left:20px;display:grid;gap:10px">${l[1].map(r=>`<li>${esc(r)}</li>`).join('')}</ol></div>
+  <h2 class="stitle mt"><span>উদাহরণ</span></h2><div class="grid grid-2">${l[2].map(e=>`<div class="card"><div class="flex-between"><div class="jp" style="font-size:17px">${esc(e[0])}</div>${speakBtn(e[0].replace(/[ …]/g,''))}</div><details class="mt-sm"><summary class="small" style="cursor:pointer">উত্তর / অর্থ দেখুন</summary><p class="mt-sm">${esc(e[1])}</p></details></div>`).join('')}</div>
+  <div class="flex-between mt">${n>1?`<a class="btn btn-soft" href="#/bgrammar/${n-1}">${ICONS.arrowLeft} ${n-1}</a>`:'<span></span>'}${n<BG.length?`<a class="btn btn-primary" href="#/bgrammar/${n+1}">${n+1} ${ICONS.arrowRight}</a>`:''}</div>`;}
 
   /* ============ REFERENCE ============ */
   function renderReference(){
@@ -2730,6 +2907,12 @@
     if(action==='material-download'){handleDownloadUpload(target.dataset.id);return;}
     if(action==='material-delete'){handleDeleteUpload(target.dataset.id);return;}
     if(action==='material-set-url'){const id=target.dataset.id;const url=prompt('Enter PDF URL:');if(url&&url.trim()){curatedUrls[id]=url.trim();saveCuratedUrls();render();toast('URL saved');}return;}
+    if(action==='audio-lesson'){audioLesson=+target.dataset.lesson;render();return;}
+    if(action==='audio-rate'){audioRate=+target.dataset.rate;document.querySelectorAll('[data-action="audio-rate"]').forEach(b=>b.classList.toggle('active',+b.dataset.rate===audioRate));applyAudioRate();return;}
+    if((action==='audio-upload'||action==='audio-add-url'||action==='audio-delete')&&!isAdmin()){toast('Admin only');return;}
+    if(action==='audio-upload'){const input=document.createElement('input');input.type='file';input.multiple=true;input.accept='audio/*,.mp3,.m4a,.wav,.ogg,.aac';input.onchange=async ev=>{const files=[...(ev.target.files||[])];if(!files.length)return;const ln=parseInt(prompt('Lesson number (1-25), or 0 for general:','0'),10);const lesson=(ln>=1&&ln<=25)?ln:0;let n=0;for(const f of files){if(f.size>100*1024*1024){toast(f.name+' too large');continue;}try{await saveAudioRecord(f,lesson,f.name.replace(/\.[^.]+$/,''));n++;}catch(err){toast('Upload failed');}}if(n)toast(n+' uploaded');await loadAudioList();};input.click();return;}
+    if(action==='audio-add-url'){const url=prompt('Audio URL or file path (e.g. audio/lesson01.mp3):');if(!url||!url.trim())return;const title=prompt('Title:','Audio')||'Audio';const ln=parseInt(prompt('Lesson number (1-25), or 0 for general:','0'),10);const arr=loadAudioUrls();arr.push({id:'u-'+Date.now(),lesson:(ln>=1&&ln<=25)?ln:0,title,url:url.trim()});saveAudioUrls(arr);toast('Added');loadAudioList();return;}
+    if(action==='audio-delete'){if(!confirm('Delete?'))return;const id=target.dataset.id;if(target.dataset.kind==='url'){saveAudioUrls(loadAudioUrls().filter(x=>x.id!==id));loadAudioList();}else{deleteUploadRecord(id).then(()=>{try{URL.revokeObjectURL(audioCache.objUrls[id]);}catch{}delete audioCache.objUrls[id];toast('Deleted');loadAudioList();}).catch(()=>toast('Delete failed'));}return;}
     if(action==='lang'){state.lang=target.dataset.lang;saveState();render();return;}
     if(action==='theme'){state.theme=target.dataset.theme;applyTheme();saveState();render();return;}
     if(action==='reset-all'){if(confirm(tUi('resetConfirm'))){const lang=state.lang,theme=state.theme;state={...defaultState,lang,theme};saveState();render();toast(tUi('reset'));}return;}
@@ -2745,12 +2928,29 @@
     if(!location.hash) location.hash='#/';
     document.body.addEventListener('click',handleClick);
     initVoices();
+    ['gesturestart','gesturechange','gestureend'].forEach(ev=>document.addEventListener(ev,e=>e.preventDefault()));
+    document.addEventListener('touchmove',e=>{if(e.touches&&e.touches.length>1)e.preventDefault();},{passive:false});
+    window.addEventListener('scroll',()=>{const h=document.getElementById('header');if(h)h.classList.toggle('scrolled',window.scrollY>8);},{passive:true});
     const sh=document.getElementById('sakuraHeader');if(sh)sh.innerHTML=sakuraPetals(10,6,10,5,9);
     render();
     trackView();
   }
   if(document.readyState!=='loading') init();
   else document.addEventListener('DOMContentLoaded',init);
+</script>
+<script>
+  /* ===== hard no-zoom (pinch, double-tap, ctrl+wheel, iOS gestures) ===== */
+  (function(){
+    const stop=e=>e.preventDefault();
+    ['gesturestart','gesturechange','gestureend'].forEach(t=>document.addEventListener(t,stop,{passive:false}));
+    document.addEventListener('touchmove',e=>{if(e.touches&&e.touches.length>1||(e.scale&&e.scale!==1))e.preventDefault();},{passive:false});
+    document.addEventListener('touchstart',e=>{if(e.touches&&e.touches.length>1)e.preventDefault();},{passive:false});
+    let last=0;
+    document.addEventListener('touchend',e=>{const n=Date.now();if(n-last<350&&!/^(INPUT|TEXTAREA|SELECT)$/.test((e.target||{}).tagName||''))e.preventDefault();last=n;},{passive:false});
+    document.addEventListener('dblclick',stop,{passive:false});
+    document.addEventListener('wheel',e=>{if(e.ctrlKey)e.preventDefault();},{passive:false});
+    document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&['+','-','=','0'].includes(e.key))e.preventDefault();});
+  })();
 </script>
 </body>
 </html>
